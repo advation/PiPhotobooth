@@ -100,13 +100,13 @@ def capture_image():
     global cam
     uid = time.strftime("%Y-%m-%d_%H%M%S")
     image = cam.get_image()
-    pygame.image.save(image, 'images/%s.jpg' % uid)
+    pygame.image.save(image, '/home/pi/PiPhotobooth/images/%s.jpg' % uid)
     return uid
 
 
 def send_to_printer(uid):
     print("Printing image...")
-    os.system("lp -d Canon_SELPHY_CP1300 images/%s.jpg" % uid)
+    os.system("lp -d Canon_SELPHY_CP1300 /home/pi/PiPhotobooth/images/%s.jpg" % uid)
 
 
 # Main Program Loop
@@ -134,15 +134,6 @@ def main_loop():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 run = False
 
-            '''
-            # 'c' key pressed
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_c:
-                    print("'c' key pressed")
-                    break
-            '''
-
-        # image = pygame.image.load('images/test.jpg')
         image = cam.get_image()
         screen.blit(image, (80, 15))
         message_display("Tap here to take a picture")
@@ -248,9 +239,8 @@ def review_loop():
 
         current_time = pygame.time.get_ticks()
 
-        image = pygame.image.load('images/%s.jpg' % captured_image)
+        image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
         screen.blit(image, (80, 15))
-        #message_display("Select an option")
         pygame.draw.rect(screen, RED, [20, ((height/2)+50), 150, 150])
         pygame.draw.rect(screen, GREEN, [630, ((height/2)+50), 150, 150])
         display_retake()
