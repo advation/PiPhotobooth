@@ -49,7 +49,7 @@ def text_objects(text, font):
 
 # Display message
 def message_display(text):
-    largeText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 50)
+    largeText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 50)
     TextSurface, TextRect = text_objects(text, largeText)
     TextRect.center = ((width / 2), (height / 2))
     screen.blit(TextSurface, TextRect)
@@ -57,7 +57,7 @@ def message_display(text):
 
 # Display message along the top
 def message_display_top(text):
-    largeText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 30)
+    largeText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects(text, largeText)
     TextRect.center = ((width / 2), 30)
     screen.blit(TextSurface, TextRect)
@@ -65,7 +65,7 @@ def message_display_top(text):
 
 # Display message center
 def message_display_large(text):
-    largeText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 50)
+    largeText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 50)
     TextSurface, TextRect = text_objects(text, largeText)
     TextRect.center = ((width/2), (height/2))
     screen.fill(BLACK)
@@ -74,20 +74,20 @@ def message_display_large(text):
 
 # Display message center
 def message_display_xlarge(text):
-    largeText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 120)
+    largeText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 120)
     TextSurface, TextRect = text_objects(text, largeText)
     TextRect.center = ((width/2), (height/2))
     screen.blit(TextSurface, TextRect)
 
 
 def display_retake():
-    normalText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 30)
+    normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects("Retake", normalText)
     screen.blit(TextSurface, (45, (height/2)+110))
 
 
 def display_print():
-    normalText = pygame.font.Font('~/PiPhotobooth/Ubuntu-R.ttf', 30)
+    normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects("Print", normalText)
     screen.blit(TextSurface, (670, (height/2)+110))
 
