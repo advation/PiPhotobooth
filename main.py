@@ -128,6 +128,11 @@ def send_to_printer(uid):
     os.system("lp -d Canon_SELPHY_CP1300 /home/pi/PiPhotobooth/images/%s.jpg" % uid)
 
 
+def clear_print_queue():
+    print("Clearing print queue...")
+    os.system("cancel -a Canon_SELPHY_CP1300")
+
+
 # Main Program Loop
 def main_loop():
 
@@ -378,6 +383,9 @@ def print_loop():
 
 
 if __name__ == "__main__":
+
+    # Clear print queue
+    clear_print_queue()
 
     # Start main program loop
     while True:
