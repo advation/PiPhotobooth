@@ -349,40 +349,16 @@ def print_loop():
         pygame.display.update()
 
         send_to_printer(captured_image)
-        time.sleep(70)
+        time.sleep(68)
 
         if print_amount >= 2:
             send_to_printer(captured_image)
-            time.sleep(70)
+            time.sleep(68)
 
         if print_amount == 3:
             send_to_printer(captured_image)
-            time.sleep(70)
+            time.sleep(68)
 
-        '''
-        start_time = pygame.time.get_ticks()
-        current_time = pygame.time.get_ticks()
-        
-        
-        while current_time < start_time + print_wait_time:
-            for event in pygame.event.get():
-                # Exit event
-                if event.type == pygame.QUIT:
-                    print("Exiting...")
-                    sys.exit(1)
-
-                # Exit event
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        print("Exiting...")
-                        sys.exit(1)
-
-                # Mouse Button Down Event
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    pass
-
-            current_time = pygame.time.get_ticks()
-        '''
     else:
         print("Print rejected")
 
