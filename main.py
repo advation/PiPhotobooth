@@ -23,6 +23,7 @@ cam.set_controls(vflip=True, hflip=False)
 pygame.mouse.set_visible(False)
 
 print_image = False
+print_amount = 1
 print_wait_time = 5000  # 1000 = 1 second
 
 BLACK = (0, 0, 0)
@@ -267,7 +268,7 @@ def review_loop():
 
 
 def print_amount_loop():
-    global print_image, captured_image
+    global print_image, captured_image, print_amount
     start_time = pygame.time.get_ticks()
     current_time = pygame.time.get_ticks()
     clear_screen()
@@ -292,11 +293,17 @@ def print_amount_loop():
                 mouse_position = pygame.mouse.get_pos()
 
                 if 0 + 300 > mouse_position[0] > 0 and height > mouse_position[1] > 0:
-                    print_image = False
+                    print_image = True
                     run = False
 
-                if 650 + 150 > mouse_position[0] > 650 and height > mouse_position[1] > 0:
+                if 300 > mouse_position[0] > 500 and height > mouse_position[1] > 0:
                     print_image = True
+                    print_amount = 2
+                    run = False
+
+                if 500 > mouse_position[0] > 800 and height > mouse_position[1] > 0:
+                    print_image = True
+                    print_amount = 3
                     run = False
 
         if current_time > start_time + 30000:
@@ -322,19 +329,20 @@ def print_amount_loop():
 
 
 def print_loop():
-    global print_image, captured_image
+    global print_image, captured_image, print_amount
     clear_screen()
     pygame.mouse.set_visible(False)
     if print_image is True:
 
         print("Send print to printer")
-        send_to_printer(captured_image)
+        for i in print_amount:
+            send_to_printer(captured_image)
 
         start_time = pygame.time.get_ticks()
         current_time = pygame.time.get_ticks()
         message_display("Printing picture...")
 
-        while current_time < start_time + print_wait_time:
+        while current_time < start_time + print_wait_time * print_amount:
             for event in pygame.event.get():
                 # Exit event
                 if event.type == pygame.QUIT:
