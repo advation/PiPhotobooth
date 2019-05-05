@@ -23,7 +23,7 @@ cam.set_controls(vflip=True, hflip=False)
 pygame.mouse.set_visible(False)
 
 print_image = False
-print_wait_time = 65000  # 1000 = 1 second
+print_wait_time = 5000  # 1000 = 1 second
 
 BLACK = (0, 0, 0)
 DARK_GREY = (55, 62, 72)
@@ -146,7 +146,7 @@ def capture_loop():
     clear_screen()
     start_time = pygame.time.get_ticks()
     current_time = pygame.time.get_ticks()
-    message_display("Printing picture...")
+    #message_display("Printing picture...")
 
     while current_time < start_time + 6000:
         for event in pygame.event.get():
@@ -248,6 +248,55 @@ def review_loop():
         pygame.display.update()
 
 
+def print_amount_loop():
+    global print_image, captured_image
+    start_time = pygame.time.get_ticks()
+    current_time = pygame.time.get_ticks()
+    clear_screen()
+    pygame.mouse.set_visible(True)
+
+    run = True
+    while run:
+        for event in pygame.event.get():
+            # Exit event
+            if event.type == pygame.QUIT:
+                print("Exiting...")
+                sys.exit(1)
+
+            # Exit event
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    print("Exiting...")
+                    sys.exit(1)
+
+            # Mouse Button Down Event
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_position = pygame.mouse.get_pos()
+
+                if 0 + 300 > mouse_position[0] > 0 and height > mouse_position[1] > 0:
+                    print_image = False
+                    run = False
+
+                if 650 + 150 > mouse_position[0] > 650 and height > mouse_position[1] > 0:
+                    print_image = True
+                    run = False
+
+        if current_time > start_time + 30000:
+            break
+
+        if run is False:
+            break
+
+        current_time = pygame.time.get_ticks()
+
+        image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
+        screen.blit(image, (80, 15))
+        pygame.draw.rect(screen, BLUE, [20, ((height / 2) + 50), 150, 150])
+        pygame.draw.rect(screen, BLUE, [170, ((height / 2) + 50), 150, 150])
+        pygame.draw.rect(screen, BLUE, [340, ((height / 2) + 50), 150, 150])
+        pygame.display.update()
+
+
 def print_loop():
     global print_image, captured_image
     clear_screen()
@@ -299,6 +348,9 @@ if __name__ == "__main__":
         clear_screen()
 
         review_loop()
+        clear_screen()
+
+        print_amount_loop()
         clear_screen()
 
         print_loop()
