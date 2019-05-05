@@ -95,19 +95,19 @@ def display_print():
 def one_print():
     normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects("1 Copy", normalText)
-    screen.blit(TextSurface, (200, (height/2)+110))
+    screen.blit(TextSurface, (140, (height/2)+110))
 
 
 def two_print():
     normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects("2 Copies", normalText)
-    screen.blit(TextSurface, (200, (height/2)+110))
+    screen.blit(TextSurface, (400, (height/2)+110))
 
 
 def three_print():
     normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
     TextSurface, TextRect = text_objects("3 Copies", normalText)
-    screen.blit(TextSurface, (200, (height / 2) + 110))
+    screen.blit(TextSurface, (600, (height / 2) + 110))
 
 
 def clear_screen():
