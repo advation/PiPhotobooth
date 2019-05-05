@@ -294,20 +294,17 @@ def print_amount_loop():
 
                 if 0 < mouse_position[0] < 299 and height > mouse_position[1] > 0:
                     print_image = True
-                    print("area 1 was touched")
-                    #run = False
+                    run = False
 
                 if 300 < mouse_position[0] < 499 and height > mouse_position[1] > 0:
                     print_image = True
-                    print("area 2 was touched")
                     print_amount = 2
-                    #run = False
+                    run = False
 
                 if 500 < mouse_position[0] < 800 and height > mouse_position[1] > 0:
                     print_image = True
-                    print("area 3 was touched")
                     print_amount = 3
-                    #run = False
+                    run = False
 
         if current_time > start_time + 30000:
             break
