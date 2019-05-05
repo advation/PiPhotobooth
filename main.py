@@ -260,7 +260,6 @@ def review_loop():
             break
 
         if run is False:
-            print_image = True
             break
 
         current_time = pygame.time.get_ticks()
