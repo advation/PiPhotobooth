@@ -292,7 +292,7 @@ def print_amount_loop():
         image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
         screen.blit(image, (80, 15))
         pygame.draw.rect(screen, BLUE, [20, ((height / 2) + 50), 150, 150])
-        pygame.draw.rect(screen, BLUE, [170, ((height / 2) + 50), 150, 150])
+        pygame.draw.rect(screen, BLUE, [180, ((height / 2) + 50), 150, 150])
         pygame.draw.rect(screen, BLUE, [360, ((height / 2) + 50), 150, 150])
         pygame.display.update()
 
