@@ -92,6 +92,24 @@ def display_print():
     screen.blit(TextSurface, (670, (height/2)+110))
 
 
+def one_print():
+    normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
+    TextSurface, TextRect = text_objects("1 Copy", normalText)
+    screen.blit(TextSurface, (200, (height/2)+110))
+
+
+def two_print():
+    normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
+    TextSurface, TextRect = text_objects("2 Copies", normalText)
+    screen.blit(TextSurface, (200, (height/2)+110))
+
+
+def three_print():
+    normalText = pygame.font.Font('/home/pi/PiPhotobooth/Ubuntu-R.ttf', 30)
+    TextSurface, TextRect = text_objects("3 Copies", normalText)
+    screen.blit(TextSurface, (200, (height / 2) + 110))
+
+
 def clear_screen():
     screen.fill(BLACK)
 
@@ -292,8 +310,14 @@ def print_amount_loop():
         image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
         screen.blit(image, (80, 15))
         pygame.draw.rect(screen, BLUE, [125, ((height / 2) + 50), 150, 150])
-        pygame.draw.rect(screen, GREEN, [325, ((height / 2) + 50), 150, 150])
-        pygame.draw.rect(screen, RED, [525, ((height / 2) + 50), 150, 150])
+        one_print()
+
+        pygame.draw.rect(screen, BLUE, [325, ((height / 2) + 50), 150, 150])
+        two_print()
+
+        pygame.draw.rect(screen, BLUE, [525, ((height / 2) + 50), 150, 150])
+        three_print()
+
         pygame.display.update()
 
 
