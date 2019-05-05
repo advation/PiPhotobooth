@@ -292,18 +292,18 @@ def print_amount_loop():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_position = pygame.mouse.get_pos()
 
-                if 0 > mouse_position[0] > 299 and height > mouse_position[1] > 0:
+                if 0+299 > mouse_position[0] > 299 and height > mouse_position[1] > 0:
                     print_image = True
                     print("area 1 was touched")
                     #run = False
 
-                if 300 > mouse_position[0] > 499 and height > mouse_position[1] > 0:
+                if 300+199 > mouse_position[0] > 499 and height > mouse_position[1] > 0:
                     print_image = True
                     print("area 2 was touched")
                     print_amount = 2
                     #run = False
 
-                if 500 > mouse_position[0] > 800 and height > mouse_position[1] > 0:
+                if 500+300 > mouse_position[0] > 800 and height > mouse_position[1] > 0:
                     print_image = True
                     print("area 3 was touched")
                     print_amount = 3
