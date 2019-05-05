@@ -293,7 +293,7 @@ def print_amount_loop():
         screen.blit(image, (80, 15))
         pygame.draw.rect(screen, BLUE, [20, ((height / 2) + 50), 150, 150])
         pygame.draw.rect(screen, BLUE, [170, ((height / 2) + 50), 150, 150])
-        pygame.draw.rect(screen, BLUE, [340, ((height / 2) + 50), 150, 150])
+        pygame.draw.rect(screen, BLUE, [360, ((height / 2) + 50), 150, 150])
         pygame.display.update()
 
 
