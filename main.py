@@ -335,6 +335,7 @@ def print_loop():
     if print_image is True:
 
         print("Send print to printer")
+        i = 1
         while i <= print_amount:
             send_to_printer(captured_image)
             i = i + 1
