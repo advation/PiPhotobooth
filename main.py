@@ -344,17 +344,27 @@ def print_loop():
     pygame.mouse.set_visible(False)
     if print_image is True:
 
+        message_display("Printing picture...")
         print("Send print to printer")
-        i = 1
-        while i <= print_amount:
-            send_to_printer(captured_image)
-            i = i + 1
+        pygame.display.update()
 
+        send_to_printer(captured_image)
+        time.sleep(70)
+
+        if print_amount >= 2:
+            send_to_printer(captured_image)
+            time.sleep(70)
+
+        if print_amount == 3:
+            send_to_printer(captured_image)
+            time.sleep(70)
+
+        '''
         start_time = pygame.time.get_ticks()
         current_time = pygame.time.get_ticks()
-        message_display("Printing picture...")
-
-        while current_time < start_time + print_wait_time * print_amount:
+        
+        
+        while current_time < start_time + print_wait_time:
             for event in pygame.event.get():
                 # Exit event
                 if event.type == pygame.QUIT:
@@ -372,8 +382,7 @@ def print_loop():
                     pass
 
             current_time = pygame.time.get_ticks()
-            pygame.display.update()
-
+        '''
     else:
         print("Print rejected")
 
