@@ -335,8 +335,9 @@ def print_loop():
     if print_image is True:
 
         print("Send print to printer")
-        for i in print_amount:
+        while i <= print_amount:
             send_to_printer(captured_image)
+            i = i + 1
 
         start_time = pygame.time.get_ticks()
         current_time = pygame.time.get_ticks()
