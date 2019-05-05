@@ -242,18 +242,20 @@ def review_loop():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_position = pygame.mouse.get_pos()
 
-                if 0+300 > mouse_position[0] > 0 and height > mouse_position[1] > 0:
+                if 0 < mouse_position[0] < 400 and height > mouse_position[1] > 0:
                     print_image = False
                     run = False
 
-                if 650+150 > mouse_position[0] > 650 and height > mouse_position[1] > 0:
+                if 401 < mouse_position[0] < 800 and height > mouse_position[1] > 0:
                     print_image = True
                     run = False
 
         if current_time > start_time + 30000:
+            print_image = False
             break
 
         if run is False:
+            print_image = True
             break
 
         current_time = pygame.time.get_ticks()
@@ -274,61 +276,62 @@ def print_amount_loop():
     clear_screen()
     pygame.mouse.set_visible(True)
 
-    run = True
-    while run:
-        for event in pygame.event.get():
-            # Exit event
-            if event.type == pygame.QUIT:
-                print("Exiting...")
-                sys.exit(1)
-
-            # Exit event
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+    if print_image is True:
+        run = True
+        while run:
+            for event in pygame.event.get():
+                # Exit event
+                if event.type == pygame.QUIT:
                     print("Exiting...")
                     sys.exit(1)
 
-            # Mouse Button Down Event
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_position = pygame.mouse.get_pos()
+                # Exit event
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        print("Exiting...")
+                        sys.exit(1)
 
-                if 0 < mouse_position[0] < 299 and height > mouse_position[1] > 0:
-                    print_image = True
-                    run = False
+                # Mouse Button Down Event
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_position = pygame.mouse.get_pos()
 
-                if 300 < mouse_position[0] < 499 and height > mouse_position[1] > 0:
-                    print_image = True
-                    print_amount = 2
-                    run = False
+                    if 0 < mouse_position[0] < 299 and height > mouse_position[1] > 0:
+                        print_image = True
+                        run = False
 
-                if 500 < mouse_position[0] < 800 and height > mouse_position[1] > 0:
-                    print_image = True
-                    print_amount = 3
-                    run = False
+                    if 300 < mouse_position[0] < 499 and height > mouse_position[1] > 0:
+                        print_image = True
+                        print_amount = 2
+                        run = False
 
-        if current_time > start_time + 30000:
-            break
+                    if 500 < mouse_position[0] < 800 and height > mouse_position[1] > 0:
+                        print_image = True
+                        print_amount = 3
+                        run = False
 
-        if run is False:
-            break
+            if current_time > start_time + 30000:
+                break
 
-        current_time = pygame.time.get_ticks()
+            if run is False:
+                break
 
-        image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
-        screen.blit(image, (80, 15))
+            current_time = pygame.time.get_ticks()
 
-        message_display("How many copies?")
+            image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
+            screen.blit(image, (80, 15))
 
-        pygame.draw.rect(screen, BLUE, [125, ((height / 2) + 50), 150, 150])
-        one_print()
+            message_display("How many copies?")
 
-        pygame.draw.rect(screen, BLUE, [325, ((height / 2) + 50), 150, 150])
-        two_print()
+            pygame.draw.rect(screen, BLUE, [125, ((height / 2) + 50), 150, 150])
+            one_print()
 
-        pygame.draw.rect(screen, BLUE, [525, ((height / 2) + 50), 150, 150])
-        three_print()
+            pygame.draw.rect(screen, BLUE, [325, ((height / 2) + 50), 150, 150])
+            two_print()
 
-        pygame.display.update()
+            pygame.draw.rect(screen, BLUE, [525, ((height / 2) + 50), 150, 150])
+            three_print()
+
+            pygame.display.update()
 
 
 def print_loop():
