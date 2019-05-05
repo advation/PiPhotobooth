@@ -316,7 +316,6 @@ def print_amount_loop():
 
         image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
         screen.blit(image, (80, 15))
-        pygame.display.update()
 
         message_display("How many copies?")
 
