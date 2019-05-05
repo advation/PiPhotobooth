@@ -24,7 +24,7 @@ pygame.mouse.set_visible(False)
 
 print_image = False
 print_amount = 1
-print_wait_time = 5000  # 1000 = 1 second
+print_wait_time = 65000  # 1000 = 1 second
 
 BLACK = (0, 0, 0)
 DARK_GREY = (55, 62, 72)
