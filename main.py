@@ -117,6 +117,7 @@ def clear_screen():
 
 def capture_image():
     global cam
+    print("captured an image")
     uid = time.strftime("%Y-%m-%d_%H%M%S")
     image = cam.get_image()
     pygame.image.save(image, '/home/pi/PiPhotobooth/images/%s.jpg' % uid)
@@ -214,9 +215,10 @@ def capture_loop():
         if current_time > start_time + 5000:
             screen.blit(image, (80, 15))
             message_display_xlarge("")
-            cam.stop()
-            cam.start()
-            captured_image = capture_image()
+            #cam.stop()
+            #cam.start()
+            if captured_image is None:
+                captured_image = capture_image()
 
         pygame.display.update()
         current_time = pygame.time.get_ticks()
@@ -264,7 +266,7 @@ def review_loop():
 
         current_time = pygame.time.get_ticks()
 
-        image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % captured_image)
+        image = pygame.image.load('/home/pi/PiPhotobooth/images/%s.jpg' % str(captured_image))
         screen.blit(image, (80, 15))
         pygame.draw.rect(screen, RED, [20, ((height/2)+50), 150, 150])
         pygame.draw.rect(screen, GREEN, [630, ((height/2)+50), 150, 150])
