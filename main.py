@@ -4,6 +4,7 @@ import time
 import uuid
 import pygame
 import pygame.camera
+import threading
 from pygame import mouse
 from pygame.locals import *
 
@@ -368,7 +369,21 @@ def print_loop():
     captured_image = None
 
 
+def web_server():
+    os.system("flask run --host=0.0.0.0")
+
+
 if __name__ == "__main__":
+
+    # Set evironment variable
+    os.environ['FLASK_APP'] = "/home/pi/photoweb/web.py"
+
+    try:
+        # Start Flask web server
+        flask = threading.Thread(target=web_server)
+        flask.start()
+    except Exception as e:
+        print(e)
 
     # Clear print queue
     clear_print_queue()
